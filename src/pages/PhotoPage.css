@@ -1,0 +1,24 @@
+/* src/pages/PhotoPage.css */
+.photo-container {
+    padding: 20px;
+  }
+  
+  .photo-container h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .photo-container img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .photo-container .form-control {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
+  .photo-container .btn {
+    margin-top: 10px;
+  }
+  

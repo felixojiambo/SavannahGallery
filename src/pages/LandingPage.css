@@ -1,0 +1,17 @@
+/* src/pages/LandingPage.css */
+.landing-container {
+    padding: 20px;
+  }
+  
+  .landing-container h1 {
+    font-size: 2.5rem;
+  }
+  
+  .landing-container p {
+    font-size: 1.25rem;
+  }
+  
+  .landing-container .btn {
+    margin-top: 20px;
+  }
+  

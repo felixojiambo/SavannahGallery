@@ -1,0 +1,15 @@
+/* src/pages/LoginPage.css */
+.login-container {
+    padding: 20px;
+  }
+  
+  .login-container h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .login-container .btn {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+  
