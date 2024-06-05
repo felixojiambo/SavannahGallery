@@ -1,34 +1,40 @@
+/* eslint-disable react/jsx-no-undef */
 // src/pages/UserPage.js
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 const UserPage = () => {
-  const { userId } = useParams();
+  const { id } = useParams();
   const [user, setUser] = useState(null);
   const [albums, setAlbums] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const userResponse = await axios.get(`https://jsonplaceholder.typicode.com/users/${userId}`);
-      const albumsResponse = await axios.get(`https://jsonplaceholder.typicode.com/albums?userId=${userId}`);
-      setUser(userResponse.data);
-      setAlbums(albumsResponse.data);
+    const fetchUser = async () => {
+      const result = await axios.get(`https://jsonplaceholder.typicode.com/users/${id}`);
+      setUser(result.data);
     };
-    fetchData();
-  }, [userId]);
+
+    const fetchAlbums = async () => {
+      const result = await axios.get(`https://jsonplaceholder.typicode.com/albums?userId=${id}`);
+      setAlbums(result.data);
+    };
+
+    fetchUser();
+    fetchAlbums();
+  }, [id]);
 
   if (!user) return <div>Loading...</div>;
 
   return (
-    <div>
+    <div className="container">
       <h1>{user.name}</h1>
-      <p>Email: {user.email}</p>
+      <p>{user.email}</p>
       <h2>Albums</h2>
-      <ul>
+      <ul className="list-group">
         {albums.map(album => (
-          <li key={album.id}>
-            <Link to={`/album/${album.id}`}>{album.title}</Link>
+          <li key={album.id} className="list-group-item">
+            <Link to={`/albums/${album.id}`}>{album.title}</Link>
           </li>
         ))}
       </ul>

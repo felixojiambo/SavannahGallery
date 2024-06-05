@@ -1,15 +1,21 @@
-/* src/pages/LoginPage.css */
 .login-container {
-    padding: 20px;
-  }
-  
-  .login-container h1 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-  }
-  
-  .login-container .btn {
-    font-size: 1rem;
-    padding: 10px 20px;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}

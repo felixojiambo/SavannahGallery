@@ -8,25 +8,28 @@ const HomePage = () => {
   const [albums, setAlbums] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const usersResponse = await axios.get('https://jsonplaceholder.typicode.com/users');
-      const albumsResponse = await axios.get('https://jsonplaceholder.typicode.com/albums');
-      setUsers(usersResponse.data);
-      setAlbums(albumsResponse.data);
+    const fetchUsers = async () => {
+      const result = await axios.get('https://jsonplaceholder.typicode.com/users');
+      setUsers(result.data);
     };
-    fetchData();
+
+    const fetchAlbums = async () => {
+      const result = await axios.get('https://jsonplaceholder.typicode.com/albums');
+      setAlbums(result.data);
+    };
+
+    fetchUsers();
+    fetchAlbums();
   }, []);
 
-  const getAlbumCount = (userId) => albums.filter(album => album.userId === userId).length;
-
   return (
-    <div>
+    <div className="container">
       <h1>Users</h1>
-      <ul>
+      <ul className="list-group">
         {users.map(user => (
-          <li key={user.id}>
-            <Link to={`/user/${user.id}`}>
-              {user.name} - {getAlbumCount(user.id)} albums
+          <li key={user.id} className="list-group-item">
+            <Link to={`/users/${user.id}`}>
+              {user.name} - {albums.filter(album => album.userId === user.id).length} albums
             </Link>
           </li>
         ))}
